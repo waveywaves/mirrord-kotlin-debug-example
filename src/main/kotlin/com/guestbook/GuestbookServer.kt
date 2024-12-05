@@ -107,7 +107,7 @@ class GuestbookServer(private val port: Int) {
                                     const date = new Date(entry.timestamp);
                                     const entryDiv = document.createElement('div');
                                     entryDiv.className = 'entry';
-                                    entryDiv.innerHTML = "<strong>${'$'}{entry.name}</strong><p>${'$'}{entry.message}</p><small>${'$'}{date.toLocaleString()}</small>"
+                                    entryDiv.innerHTML = `<strong>${'$'}{entry.name}</strong><p>${'$'}{entry.message}</p>`;
                                     entriesDiv.appendChild(entryDiv);
                                 });
                             })
