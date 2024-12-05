@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: guestbook
+  name: kotlin-guestbook
 spec:
   selector:
-    app: guestbook
+    app: kotlin-guestbook
   ports:
   - port: 80
     targetPort: 8080
-  type: LoadBalancer 
+  type: LoadBalancer

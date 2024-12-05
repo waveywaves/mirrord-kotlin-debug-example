@@ -1,13 +1,33 @@
+package com.guestbook
+
 import com.sun.net.httpserver.HttpServer
 import com.sun.net.httpserver.HttpExchange
 import java.net.InetSocketAddress
 import java.io.*
 import redis.clients.jedis.Jedis
 import com.google.gson.Gson
+import java.net.URI
 
 class GuestbookServer(private val port: Int) {
     private val server: HttpServer = HttpServer.create(InetSocketAddress(port), 0)
-    private val redis = Jedis(System.getenv("REDIS_HOST") ?: "localhost")
+    private val redisHost: String
+    private val redisPort: Int
+    private val redis: Jedis
+
+    init {
+        val redisAddress = System.getenv("REDIS_HOST") ?: "localhost"
+        redisPort = System.getenv("REDIS_PORT")?.toInt() ?: 6379
+
+        // Handle TCP URL format from Kubernetes
+        redisHost = if (redisAddress.startsWith("tcp://")) {
+            URI(redisAddress.replace("tcp://", "http://")).host
+        } else {
+            redisAddress
+        }
+
+        redis = Jedis(redisHost, redisPort)
+    }
+
     private val gson = Gson()
 
     init {
@@ -46,5 +66,6 @@ class GuestbookServer(private val port: Int) {
     fun start() {
         server.start()
         println("Server started on port $port")
+        println("Connected to Redis at $redisHost:$redisPort")
     }
 } 
