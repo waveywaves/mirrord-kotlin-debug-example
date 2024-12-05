@@ -1,0 +1,7 @@
+{
+    "target": "deployment/kotlin-guestbook",
+    "feature": {
+      "env": true,
+      "network": true
+    }
+  }
