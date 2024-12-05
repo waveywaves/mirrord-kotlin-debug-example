@@ -1,10 +1,10 @@
-FROM gradle:7.4-jdk17 AS build
+FROM maven:3.8-openjdk-17 AS build
 WORKDIR /app
 COPY . .
-RUN gradle clean build --no-daemon
+RUN mvn clean package -DskipTests --no-transfer-progress
 
 FROM openjdk:17-slim
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /app/target/*-jar-with-dependencies.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/app.jar"] 

@@ -87,7 +87,7 @@ class GuestbookServer(private val port: Int) {
                 <h1>Guestbook</h1>
                 
                 <div class="entry-form">
-                    <h2>Add New Entry</h2>
+                    <h2>Add New Entry (change)</h2>
                     <input type="text" id="name" placeholder="Your Name" required>
                     <textarea id="message" placeholder="Your Message" required></textarea>
                     <button onclick="addEntry()">Submit</button>
