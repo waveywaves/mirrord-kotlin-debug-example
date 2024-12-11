@@ -48,46 +48,109 @@ class GuestbookServer(private val port: Int) {
             <!DOCTYPE html>
             <html>
             <head>
-                <title>Guestbook</title>
+                <title>mirrord Guestbook</title>
                 <style>
                     body {
-                        font-family: Arial, sans-serif;
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                         max-width: 800px;
                         margin: 0 auto;
                         padding: 20px;
+                        background-color: #f5f5f5;
+                        color: #333;
                     }
                     .entry {
-                        border: 1px solid #ddd;
-                        margin: 10px 0;
-                        padding: 10px;
-                        border-radius: 4px;
+                        background: white;
+                        border: 1px solid #e0e0e0;
+                        margin: 15px 0;
+                        padding: 15px;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                        transition: transform 0.2s ease;
+                    }
+                    .entry:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
                     }
                     .entry-form {
-                        margin-bottom: 20px;
+                        background: white;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                        margin-bottom: 30px;
                     }
                     input, textarea {
                         width: 100%;
-                        margin-bottom: 10px;
-                        padding: 8px;
+                        margin-bottom: 15px;
+                        padding: 12px;
+                        border: 1px solid #ddd;
+                        border-radius: 6px;
+                        box-sizing: border-box;
+                        font-family: inherit;
+                    }
+                    textarea {
+                        min-height: 100px;
+                        resize: vertical;
                     }
                     button {
-                        background-color: #4CAF50;
+                        background-color: #4361ee;
                         color: white;
-                        padding: 10px 20px;
+                        padding: 12px 24px;
                         border: none;
-                        border-radius: 4px;
+                        border-radius: 6px;
                         cursor: pointer;
+                        font-size: 16px;
+                        transition: background-color 0.2s ease;
                     }
                     button:hover {
-                        background-color: #45a049;
+                        background-color: #3046c5;
+                    }
+                    .header {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        margin-bottom: 30px;
+                        padding-bottom: 20px;
+                        border-bottom: 2px solid #e0e0e0;
+                    }
+                    .logo {
+                        height: 40px;
+                        width: auto;
+                    }
+                    h1 {
+                        color: #2d3748;
+                        margin: 0;
+                    }
+                    h2 {
+                        color: #2d3748;
+                        margin-bottom: 15px;
+                    }
+                    .entry strong {
+                        color: #4361ee;
+                        font-size: 1.1em;
+                        display: block;
+                        margin-bottom: 8px;
+                    }
+                    .entry p {
+                        margin: 0;
+                        line-height: 1.5;
+                    }
+                    @media (max-width: 600px) {
+                        body {
+                            padding: 15px;
+                        }
+                        .entry-form {
+                            padding: 15px;
+                        }
                     }
                 </style>
             </head>
             <body>
-                <h1>Guestbook</h1>
+                <div class="header">
+                    <h1>🪞 mirrord Guestbook</h1>
+                </div>
                 
                 <div class="entry-form">
-                    <h2>Add New Entry (change)</h2>
+                    <h2>Add New Entry</h2>
                     <input type="text" id="name" placeholder="Your Name" required>
                     <textarea id="message" placeholder="Your Message" required></textarea>
                     <button onclick="addEntry()">Submit</button>
