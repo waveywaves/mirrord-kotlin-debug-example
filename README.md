@@ -1,4 +1,4 @@
-# Debugging Java Applications with mirrord
+# Debugging Kotlin Applications with mirrord
 
 <div align="center">
   <a href="https://mirrord.dev">
