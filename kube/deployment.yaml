@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: kotlin-guestbook
-        image: docker.io/waveywaves/mirrord-kotlin-example:v6
+        image: docker.io/waveywaves/mirrord-kotlin-example:v8
         ports:
         - containerPort: 8080
         env:
