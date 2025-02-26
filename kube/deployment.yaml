@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: kotlin-guestbook
-        image: docker.io/waveywaves/mirrord-kotlin-example:v10
+        image: docker.io/waveywaves/mirrord-kotlin-example:v11
         ports:
-        - containerPort: 9090
+        - containerPort: 8080
         env:
         - name: REDIS_HOST
           value: redis

@@ -7,5 +7,5 @@ spec:
     app: kotlin-guestbook
   ports:
   - port: 80
-    targetPort: 9090
+    targetPort: 8080
   type: LoadBalancer
